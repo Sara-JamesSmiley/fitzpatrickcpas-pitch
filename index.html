@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitzpatrick & Casimiro, CPAs | Sacramento CPA Firm for Business Owners & Individuals</title>
+<meta name="description" content="Modernized concept for Fitzpatrick & Casimiro, CPAs, Inc. — a cleaner, higher-converting Sacramento CPA website focused on trust, clarity, and consultation-driven lead generation.">
+<meta property="og:title" content="Fitzpatrick & Casimiro, CPAs | Modern Website Concept">
+<meta property="og:description" content="A higher-converting website concept for a Sacramento CPA firm serving business owners, executives, and independent professionals.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f7f8fa;
+  --bg-alt: #ffffff;
+  --navy: #183153;
+  --navy-light: #24466f;
+  --accent: #61b15a;
+  --accent-dark: #4f9648;
+  --text: #183153;
+  --text-muted: #667085;
+  --text-light: #98a2b3;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 35px rgba(24,49,83,.08);
+  --line: rgba(24,49,83,.08);
+  --nav-h: 76px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000; height: var(--nav-h);
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; transition: box-shadow .3s;
+}
+nav.shadow { box-shadow: 0 8px 24px rgba(24,49,83,.08); }
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem; letter-spacing: .05em;
+  color: var(--navy); text-decoration: none; line-height: 1;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex; list-style: none; gap: 2rem; align-items: center;
+}
+.nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: .86rem; font-weight: 600;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-btn {
+  background: var(--accent) !important; color: white !important;
+  padding: .7rem 1.3rem; border-radius: 4px; font-weight: 700 !important;
+}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); }
+.mob-menu {
+  display: none; position: fixed; inset: 0; background: var(--navy); z-index: 999;
+  flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+}
+.mob-menu.open { display: flex; }
+.mob-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: .08em; color: #fff; text-decoration: none; }
+.mob-close { position: absolute; top: 1.5rem; right: 6%; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; }
+
+.hero {
+  min-height: 100vh; display: grid; grid-template-columns: 1.1fr .9fr; padding-top: var(--nav-h); background: var(--bg-alt);
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center; padding: 5rem 6%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .6rem; font-size: .78rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.3rem;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--accent); display: block; }
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.2rem, 6vw, 5.5rem); line-height: .96; letter-spacing: .03em;
+  margin-bottom: 1.3rem; color: var(--navy);
+}
+.hero h1 .hl { color: var(--accent); }
+.hero-sub {
+  font-size: 1.08rem; color: var(--text-muted); max-width: 560px; line-height: 1.75; margin-bottom: 2rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.btn-primary, .btn-accent, .btn-outline {
+  padding: 1rem 1.8rem; font-weight: 700; font-size: .9rem; letter-spacing: .05em; text-decoration: none; display: inline-block; border-radius: 4px; transition: .2s ease;
+}
+.btn-primary { background: var(--navy); color: white; }
+.btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.btn-outline { border: 2px solid var(--navy); color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: white; transform: translateY(-2px); }
+.hero-proof {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; max-width: 700px;
+}
+.proof-item {
+  background: var(--card-bg); border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1rem;
+}
+.proof-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--navy); line-height: 1; }
+.proof-lbl { font-size: .78rem; color: var(--text-muted); margin-top: .3rem; }
+.hero-right { position: relative; overflow: hidden; background: #e9eef4; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-badge {
+  position: absolute; bottom: 2rem; left: 2rem; background: white; box-shadow: var(--card-shadow); padding: 1rem 1.2rem; border-left: 5px solid var(--accent);
+}
+.badge-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--navy); display: block; line-height: 1; }
+.badge-txt { font-size: .78rem; color: var(--text-muted); font-weight: 600; }
+
+section { padding: 5.5rem 6%; }
+.section-inner { max-width: 1120px; margin: 0 auto; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: .6rem; font-size: .74rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;
+}
+.section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--accent); display: block; }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 4vw, 3.8rem); letter-spacing: .04em; line-height: 1.05; margin-bottom: 1rem; color: var(--navy);
+}
+.section-sub { font-size: 1.04rem; color: var(--text-muted); max-width: 680px; line-height: 1.75; }
+
+.trust-bar {
+  background: var(--navy); padding: 2.4rem 6%; color: white;
+}
+.trust-bar .section-inner { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.trust-points { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.trust-pill { padding: .65rem .9rem; border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.88); font-size: .86rem; }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 2rem;
+}
+.service-card {
+  background: var(--card-bg); border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1.5rem;
+}
+.service-card h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: .03em; font-size: 1.7rem; margin-bottom: .7rem; color: var(--navy); }
+.service-card p { color: var(--text-muted); margin-bottom: .8rem; }
+.service-card ul { padding-left: 1rem; display: grid; gap: .45rem; color: var(--text-muted); }
+
+.split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+}
+.panel {
+  background: white; border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1.6rem;
+}
+.panel h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .03em; margin-bottom: .8rem; color: var(--navy); }
+.panel p, .panel li { color: var(--text-muted); }
+.panel ul, .panel ol { padding-left: 1.1rem; display: grid; gap: .5rem; }
+
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem;
+}
+.process-step {
+  background: white; border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1.3rem;
+}
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: .5rem; }
+.process-step h4 { font-size: 1rem; color: var(--navy); margin-bottom: .5rem; }
+.process-step p { color: var(--text-muted); font-size: .95rem; }
+
+.testi-section { background: #eef4f8; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2rem; }
+.testi-card { background: white; border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1.4rem; }
+.testi-quote { color: var(--text-muted); margin-bottom: 1rem; }
+.testi-name { color: var(--navy); font-weight: 700; }
+.testi-role { color: var(--text-light); font-size: .92rem; }
+
+.cta-section {
+  background: linear-gradient(135deg, var(--navy) 0%, #24466f 100%); color: white;
+}
+.cta-wrap {
+  max-width: 960px; margin: 0 auto; text-align: center;
+}
+.cta-wrap h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing: .03em; margin-bottom: 1rem; }
+.cta-wrap p { color: rgba(255,255,255,.82); max-width: 760px; margin: 0 auto 1.5rem; }
+.notice { margin-top: 1.2rem; font-size: .86rem; color: rgba(255,255,255,.7); }
+
+footer { background: #10243d; color: white; }
+.footer-inner { max-width: 1120px; margin: 0 auto; padding: 2rem 6%; }
+.footer-top { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+.footer-brand { max-width: 460px; }
+.footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .05em; text-decoration: none; }
+.footer-brand-logo span { color: var(--accent); }
+.footer-brand p, .footer-copy { color: rgba(255,255,255,.72); }
+.footer-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; }
+
+.fade-up { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: .1s; }
+.delay-2 { transition-delay: .2s; }
+.delay-3 { transition-delay: .3s; }
+.delay-4 { transition-delay: .4s; }
+
+@media (max-width: 1024px) {
+  .hero, .split { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .process-grid { grid-template-columns: repeat(2,1fr); }
+  .testi-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-proof, .services-grid, .process-grid { grid-template-columns: 1fr; }
+  .btn-primary, .btn-accent, .btn-outline { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">Fitzpatrick <span>&</span> Casimiro</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-btn">Schedule Consultation</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">×</button>
+  <a href="#services">Services</a>
+  <a href="#why-us">Why Us</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Schedule Consultation</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Sacramento CPA Firm</span>
+    <h1>ACCOUNTING, TAX & ADVISORY <span class="hl">BUILT FOR CLARITY</span></h1>
+    <p class="hero-sub">A modernized website concept for Fitzpatrick & Casimiro, CPAs, Inc. designed to convert more visitors into consultations by making the firm’s trust, services, and next steps immediately clear for business owners, executives, and independent professionals.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-accent">Schedule a Consultation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item"><div class="proof-num">CPA</div><div class="proof-lbl">Licensed in California</div></div>
+      <div class="proof-item"><div class="proof-num">FAST</div><div class="proof-lbl">Clear paths to help and next steps</div></div>
+      <div class="proof-item"><div class="proof-num">LOCAL</div><div class="proof-lbl">Sacramento-area trust and accessibility</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="Professional tax and accounting consultation" class="hero-img">
+    <div class="hero-img-badge">
+      <span class="badge-num">CONSULTATION-FIRST</span>
+      <span class="badge-txt">Built to turn website traffic into real conversations</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="section-inner">
+    <div>
+      <strong>What this redesign improves:</strong>
+    </div>
+    <div class="trust-points">
+      <span class="trust-pill">Stronger first impression</span>
+      <span class="trust-pill">Clearer service architecture</span>
+      <span class="trust-pill">Better mobile usability</span>
+      <span class="trust-pill">More consultation-driven conversion</span>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <span class="section-eyebrow">Core Services</span>
+    <h2 class="section-title fade-up">A cleaner way to present <span style="color:var(--accent)">what the firm actually does</span></h2>
+    <p class="section-sub fade-up delay-1">Instead of scattering services and links, this concept organizes the offer clearly so the visitor understands what help is available and where to go next.</p>
+
+    <div class="services-grid">
+      <article class="service-card fade-up delay-1">
+        <h3>Tax Preparation</h3>
+        <p>For individuals, business owners, executives, and independent professionals who want accuracy, planning awareness, and reduced filing stress.</p>
+        <ul>
+          <li>Individual tax returns</li>
+          <li>Business tax filings</li>
+          <li>Deduction and credit awareness</li>
+        </ul>
+      </article>
+      <article class="service-card fade-up delay-2">
+        <h3>Small Business Accounting</h3>
+        <p>Bookkeeping, reporting, and accounting support that helps owners stay focused on growth instead of administrative drag.</p>
+        <ul>
+          <li>Monthly bookkeeping support</li>
+          <li>Financial clarity and organization</li>
+          <li>Year-round accounting partnership</li>
+        </ul>
+      </article>
+      <article class="service-card fade-up delay-3">
+        <h3>Payroll & Advisory</h3>
+        <p>Practical support for payroll, planning, and operational financial decisions that keep the business running smoothly.</p>
+        <ul>
+          <li>Payroll services</li>
+          <li>Business guidance</li>
+          <li>Financial planning support</li>
+        </ul>
+      </article>
+      <article class="service-card fade-up delay-1">
+        <h3>IRS & Tax Problem Resolution</h3>
+        <p>For clients who need experienced guidance when dealing with IRS notices, tax issues, or unresolved filing pressure.</p>
+        <ul>
+          <li>IRS notice response</li>
+          <li>Tax problem support</li>
+          <li>Clearer path to resolution</li>
+        </ul>
+      </article>
+      <article class="service-card fade-up delay-2">
+        <h3>QuickBooks Support</h3>
+        <p>Hands-on help for businesses that need better use of QuickBooks and fewer financial blind spots.</p>
+        <ul>
+          <li>QuickBooks assistance</li>
+          <li>Setup and usage guidance</li>
+          <li>Better financial organization</li>
+        </ul>
+      </article>
+      <article class="service-card fade-up delay-3">
+        <h3>Secure Client Support</h3>
+        <p>Simple, direct pathways for asking questions, uploading files securely, and starting a consultation without friction.</p>
+        <ul>
+          <li>Ask-a-question intake</li>
+          <li>Secure file upload</li>
+          <li>Newsletter and client education</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="why-us" style="background:#eef4f8;">
+  <div class="section-inner split">
+    <div class="panel fade-up">
+      <span class="section-eyebrow">Why This Wins</span>
+      <h3>Why this template is the best fit</h3>
+      <p>This firm needs trust, clarity, and service organization more than flash. Template `03-light-professional-coach` is the right conversion choice because it feels credible, modern, and approachable — which is exactly what accounting buyers need.</p>
+      <ol style="margin-top:1rem;">
+        <li>Clean visual hierarchy builds trust faster</li>
+        <li>Strong consultation CTA gives visitors a single next step</li>
+        <li>Service blocks explain value better than generic navigation links</li>
+        <li>Mobile experience is far cleaner than the current site</li>
+      </ol>
+    </div>
+    <div class="panel fade-up delay-1">
+      <span class="section-eyebrow">Pitch Angle</span>
+      <h3>What makes this a strong pitch piece</h3>
+      <p>This is not just a prettier homepage. It demonstrates a more commercially effective structure:</p>
+      <ul style="margin-top:1rem;">
+        <li>Clear headline for the right audience</li>
+        <li>Immediate trust and service relevance</li>
+        <li>Fewer distractions and stronger user flow</li>
+        <li>Modern design without losing professionalism</li>
+        <li>Better positioning for consultation-driven lead generation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-inner">
+    <span class="section-eyebrow">Suggested User Flow</span>
+    <h2 class="section-title fade-up">How the improved site should <span style="color:var(--accent)">convert</span></h2>
+    <p class="section-sub fade-up delay-1">The goal is simple: help visitors self-identify, trust the firm, understand the services, and take the next step quickly.</p>
+
+    <div class="process-grid">
+      <article class="process-step fade-up delay-1">
+        <div class="step-num">01</div>
+        <h4>Clear Promise</h4>
+        <p>The visitor immediately sees what the firm does and who it serves.</p>
+      </article>
+      <article class="process-step fade-up delay-2">
+        <div class="step-num">02</div>
+        <h4>Service Clarity</h4>
+        <p>They find the right service without hunting through fragmented pages.</p>
+      </article>
+      <article class="process-step fade-up delay-3">
+        <div class="step-num">03</div>
+        <h4>Trust Signals</h4>
+        <p>Professional presentation and structure reduce hesitation.</p>
+      </article>
+      <article class="process-step fade-up delay-4">
+        <div class="step-num">04</div>
+        <h4>Consultation CTA</h4>
+        <p>A clear call-to-action moves them toward contact, file upload, or inquiry.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="testi-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">Credibility Language</span>
+    <h2 class="section-title fade-up">Example testimonial / trust section <span style="color:var(--accent)">they should have</span></h2>
+    <div class="testi-grid">
+      <article class="testi-card fade-up delay-1">
+        <p class="testi-quote">“Professional, responsive, and easy to work with. They helped simplify a process that felt overwhelming before we found them.”</p>
+        <div class="testi-name">Individual Tax Client</div>
+        <div class="testi-role">Example placement for local trust signal</div>
+      </article>
+      <article class="testi-card fade-up delay-2">
+        <p class="testi-quote">“As a business owner, I want clarity and timely answers. This kind of website makes the firm feel organized, current, and credible.”</p>
+        <div class="testi-name">Business Owner Prospect</div>
+        <div class="testi-role">Example positioning for consultation conversion</div>
+      </article>
+      <article class="testi-card fade-up delay-3">
+        <p class="testi-quote">“A better service presentation reduces confusion and increases the odds that the right clients actually reach out.”</p>
+        <div class="testi-name">Marketing / Conversion Lens</div>
+        <div class="testi-role">Why this redesign is a business tool, not just design polish</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-wrap fade-up">
+    <span class="section-eyebrow" style="color:rgba(255,255,255,.7);">Pitch Version</span>
+    <h2>THIS IS THE KIND OF UPGRADE THAT CAN <span style="color:#9be38f;">BLOW THEM AWAY</span></h2>
+    <p>If the goal is to pitch Fitzpatrick & Casimiro on a better website, this concept gives you a strong before-and-after story: more trust, clearer services, better mobile experience, and a much stronger consultation path than the current site.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#home" class="btn-accent">Review Homepage Concept</a>
+      <a href="#why-us" class="btn-outline" style="border-color:white;color:white;">See Why This Template Fits</a>
+    </div>
+    <div class="notice">Internal note: this page is intentionally built as a better-version pitch concept for the client, not as a final published production site.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="footer-brand-logo">Fitzpatrick <span>&</span> Casimiro</a>
+        <p>Modern website concept built from the OpenClaw template skill as a conversion-first redesign pitch for a Sacramento CPA firm.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 concept build — created as a sales demonstration.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('shadow', window.scrollY > 20));
+
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobMenu').classList.add('open'));
+document.getElementById('mobClose').addEventListener('click', () => document.getElementById('mobMenu').classList.remove('open'));
+document.querySelectorAll('.mob-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobMenu').classList.remove('open')));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
