@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fitzpatrick & Casimiro, CPAs | Sacramento CPA Firm for Business Owners & Individuals</title>
-<meta name="description" content="Modernized concept for Fitzpatrick & Casimiro, CPAs, Inc. — a cleaner, higher-converting Sacramento CPA website focused on trust, clarity, and consultation-driven lead generation.">
+<meta name="description" content="Modernized concept for Fitzpatrick & Casimiro, CPAs, Inc. — using their existing language, a cleaner structure, and a conversion-focused modal contact flow.">
 <meta property="og:title" content="Fitzpatrick & Casimiro, CPAs | Modern Website Concept">
 <meta property="og:description" content="A higher-converting website concept for a Sacramento CPA firm serving business owners, executives, and independent professionals.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80">
@@ -36,8 +36,10 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
 }
+body.modal-open { overflow: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+button { font: inherit; }
 
 nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -58,10 +60,10 @@ nav.shadow { box-shadow: 0 8px 24px rgba(24,49,83,.08); }
 .nav-links {
   display: flex; list-style: none; gap: 2rem; align-items: center;
 }
-.nav-links a {
-  color: var(--text-muted); text-decoration: none; font-size: .86rem; font-weight: 600;
+.nav-links a, .nav-links button {
+  color: var(--text-muted); text-decoration: none; font-size: .86rem; font-weight: 600; background: none; border: none; cursor: pointer;
 }
-.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover, .nav-links button:hover { color: var(--navy); }
 .nav-btn {
   background: var(--accent) !important; color: white !important;
   padding: .7rem 1.3rem; border-radius: 4px; font-weight: 700 !important;
@@ -73,7 +75,7 @@ nav.shadow { box-shadow: 0 8px 24px rgba(24,49,83,.08); }
   flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
 }
 .mob-menu.open { display: flex; }
-.mob-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: .08em; color: #fff; text-decoration: none; }
+.mob-menu a, .mob-menu button { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: .08em; color: #fff; text-decoration: none; background: none; border: none; cursor: pointer; }
 .mob-close { position: absolute; top: 1.5rem; right: 6%; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; }
 
 .hero {
@@ -97,13 +99,13 @@ nav.shadow { box-shadow: 0 8px 24px rgba(24,49,83,.08); }
 }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
 .btn-primary, .btn-accent, .btn-outline {
-  padding: 1rem 1.8rem; font-weight: 700; font-size: .9rem; letter-spacing: .05em; text-decoration: none; display: inline-block; border-radius: 4px; transition: .2s ease;
+  padding: 1rem 1.8rem; font-weight: 700; font-size: .9rem; letter-spacing: .05em; text-decoration: none; display: inline-block; border-radius: 4px; transition: .2s ease; border: none; cursor: pointer;
 }
 .btn-primary { background: var(--navy); color: white; }
 .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); }
 .btn-accent { background: var(--accent); color: white; }
 .btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
-.btn-outline { border: 2px solid var(--navy); color: var(--navy); }
+.btn-outline { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
 .btn-outline:hover { background: var(--navy); color: white; transform: translateY(-2px); }
 .hero-proof {
   display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; max-width: 700px;
@@ -131,7 +133,7 @@ section { padding: 5.5rem 6%; }
 .section-title {
   font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 4vw, 3.8rem); letter-spacing: .04em; line-height: 1.05; margin-bottom: 1rem; color: var(--navy);
 }
-.section-sub { font-size: 1.04rem; color: var(--text-muted); max-width: 680px; line-height: 1.75; }
+.section-sub { font-size: 1.04rem; color: var(--text-muted); max-width: 720px; line-height: 1.75; }
 
 .trust-bar {
   background: var(--navy); padding: 2.4rem 6%; color: white;
@@ -171,7 +173,7 @@ section { padding: 5.5rem 6%; }
 .process-step p { color: var(--text-muted); font-size: .95rem; }
 
 .testi-section { background: #eef4f8; }
-.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2rem; }
+.testi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-top: 2rem; }
 .testi-card { background: white; border: 1px solid var(--line); box-shadow: var(--card-shadow); padding: 1.4rem; }
 .testi-quote { color: var(--text-muted); margin-bottom: 1rem; }
 .testi-name { color: var(--navy); font-weight: 700; }
@@ -187,14 +189,49 @@ section { padding: 5.5rem 6%; }
 .cta-wrap p { color: rgba(255,255,255,.82); max-width: 760px; margin: 0 auto 1.5rem; }
 .notice { margin-top: 1.2rem; font-size: .86rem; color: rgba(255,255,255,.7); }
 
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1.5rem;
+}
+.footer-col h4 {
+  color: white; margin-bottom: .7rem; font-size: .95rem;
+}
+.footer-col ul { list-style: none; display: grid; gap: .45rem; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,.72); text-decoration: none; font-size: .94rem; }
+
 footer { background: #10243d; color: white; }
 .footer-inner { max-width: 1120px; margin: 0 auto; padding: 2rem 6%; }
-.footer-top { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.08); }
-.footer-brand { max-width: 460px; }
+.footer-top { padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.08); }
 .footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .05em; text-decoration: none; }
 .footer-brand-logo span { color: var(--accent); }
 .footer-brand p, .footer-copy { color: rgba(255,255,255,.72); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; }
+
+.modal {
+  position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+  background: rgba(10,20,35,.58); z-index: 1200; padding: 1.2rem;
+}
+.modal.open { display: flex; }
+.modal-card {
+  width: min(100%, 620px); background: white; border-radius: 14px; box-shadow: 0 24px 80px rgba(0,0,0,.28); overflow: hidden;
+}
+.modal-head {
+  padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; align-items: center;
+}
+.modal-head h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: .03em; color: var(--navy); }
+.modal-close {
+  background: none; border: none; font-size: 1.7rem; color: var(--text-muted); cursor: pointer;
+}
+.modal-body { padding: 1.4rem; }
+.modal-body p { color: var(--text-muted); margin-bottom: 1rem; }
+.form-grid { display: grid; gap: 1rem; }
+.label-wrap { display: grid; gap: .45rem; }
+.label-wrap label { font-weight: 600; color: var(--navy); }
+.input, .textarea {
+  width: 100%; border: 1px solid #d6dce5; border-radius: 8px; padding: .95rem 1rem; font: inherit; color: var(--text); background: #fff;
+}
+.textarea { min-height: 140px; resize: vertical; }
+.modal-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+.form-note { color: var(--text-light); font-size: .86rem; margin-top: .8rem; }
 
 .fade-up { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -207,12 +244,12 @@ footer { background: #10243d; color: white; }
   .hero, .split { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: repeat(2,1fr); }
   .process-grid { grid-template-columns: repeat(2,1fr); }
-  .testi-grid { grid-template-columns: 1fr; }
+  .testi-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .hero-proof, .services-grid, .process-grid { grid-template-columns: 1fr; }
+  .hero-proof, .services-grid, .process-grid, .testi-grid, .footer-grid { grid-template-columns: 1fr; }
   .btn-primary, .btn-accent, .btn-outline { width: 100%; text-align: center; }
 }
 </style>
@@ -225,7 +262,7 @@ footer { background: #10243d; color: white; }
     <li><a href="#services">Services</a></li>
     <li><a href="#why-us">Why Us</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#contact" class="nav-btn">Schedule Consultation</a></li>
+    <li><button type="button" class="nav-btn open-contact">Schedule Consultation</button></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -235,43 +272,41 @@ footer { background: #10243d; color: white; }
   <a href="#services">Services</a>
   <a href="#why-us">Why Us</a>
   <a href="#process">Process</a>
-  <a href="#contact">Schedule Consultation</a>
+  <button type="button" class="open-contact">Schedule Consultation</button>
 </div>
 
 <section class="hero" id="home">
   <div class="hero-left">
-    <span class="hero-eyebrow">Sacramento CPA Firm</span>
-    <h1>ACCOUNTING, TAX & ADVISORY <span class="hl">BUILT FOR CLARITY</span></h1>
-    <p class="hero-sub">A modernized website concept for Fitzpatrick & Casimiro, CPAs, Inc. designed to convert more visitors into consultations by making the firm’s trust, services, and next steps immediately clear for business owners, executives, and independent professionals.</p>
+    <span class="hero-eyebrow">Turning Vision Into Value</span>
+    <h1>ACCOUNTING IS WHAT WE DO <span class="hl">BEST</span></h1>
+    <p class="hero-sub">Fitzpatrick & Casimiro, CPAs, Inc. is licensed in CA and specializes in CPA. We are professional, experienced, and affordable. We offer a broad range of services for business owners, executives, and independent professionals.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-accent">Schedule a Consultation</a>
+      <button type="button" class="btn-accent open-contact">Schedule a Consultation</button>
       <a href="#services" class="btn-outline">Explore Services</a>
     </div>
     <div class="hero-proof">
-      <div class="proof-item"><div class="proof-num">CPA</div><div class="proof-lbl">Licensed in California</div></div>
-      <div class="proof-item"><div class="proof-num">FAST</div><div class="proof-lbl">Clear paths to help and next steps</div></div>
-      <div class="proof-item"><div class="proof-num">LOCAL</div><div class="proof-lbl">Sacramento-area trust and accessibility</div></div>
+      <div class="proof-item"><div class="proof-num">CA</div><div class="proof-lbl">Licensed in California</div></div>
+      <div class="proof-item"><div class="proof-num">PRO</div><div class="proof-lbl">Professional, experienced, and affordable</div></div>
+      <div class="proof-item"><div class="proof-num">916</div><div class="proof-lbl">Call 916-483-7100 for direct help</div></div>
     </div>
   </div>
   <div class="hero-right">
     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="Professional tax and accounting consultation" class="hero-img">
     <div class="hero-img-badge">
-      <span class="badge-num">CONSULTATION-FIRST</span>
-      <span class="badge-txt">Built to turn website traffic into real conversations</span>
+      <span class="badge-num">CLEARER NEXT STEP</span>
+      <span class="badge-txt">Modal contact flow improves consultation conversion</span>
     </div>
   </div>
 </section>
 
 <div class="trust-bar">
   <div class="section-inner">
-    <div>
-      <strong>What this redesign improves:</strong>
-    </div>
+    <div><strong>What this redesign improves:</strong></div>
     <div class="trust-points">
-      <span class="trust-pill">Stronger first impression</span>
-      <span class="trust-pill">Clearer service architecture</span>
+      <span class="trust-pill">Uses their existing language</span>
+      <span class="trust-pill">Stronger CTA flow</span>
+      <span class="trust-pill">Cleaner service architecture</span>
       <span class="trust-pill">Better mobile usability</span>
-      <span class="trust-pill">More consultation-driven conversion</span>
     </div>
   </div>
 </div>
@@ -279,62 +314,62 @@ footer { background: #10243d; color: white; }
 <section id="services">
   <div class="section-inner">
     <span class="section-eyebrow">Core Services</span>
-    <h2 class="section-title fade-up">A cleaner way to present <span style="color:var(--accent)">what the firm actually does</span></h2>
-    <p class="section-sub fade-up delay-1">Instead of scattering services and links, this concept organizes the offer clearly so the visitor understands what help is available and where to go next.</p>
+    <h2 class="section-title fade-up">THEIR EXISTING SERVICES, <span style="color:var(--accent)">PRESENTED MORE CLEARLY</span></h2>
+    <p class="section-sub fade-up delay-1">This version keeps the substance of the current site, but organizes it so a prospect can immediately understand what help is available and what to do next.</p>
 
     <div class="services-grid">
       <article class="service-card fade-up delay-1">
         <h3>Tax Preparation</h3>
-        <p>For individuals, business owners, executives, and independent professionals who want accuracy, planning awareness, and reduced filing stress.</p>
+        <p>Today's tax laws are complicated. Filing a relatively simple return can be confusing. Even if you use tax software, there's no substitute for the assistance of an experienced tax professional.</p>
         <ul>
-          <li>Individual tax returns</li>
-          <li>Business tax filings</li>
-          <li>Deduction and credit awareness</li>
+          <li>Individual returns</li>
+          <li>Business returns</li>
+          <li>Deductions and credit awareness</li>
         </ul>
       </article>
       <article class="service-card fade-up delay-2">
         <h3>Small Business Accounting</h3>
-        <p>Bookkeeping, reporting, and accounting support that helps owners stay focused on growth instead of administrative drag.</p>
+        <p>We take care of your books for you, so you can get back to the job of running your business and generating profits.</p>
         <ul>
-          <li>Monthly bookkeeping support</li>
-          <li>Financial clarity and organization</li>
-          <li>Year-round accounting partnership</li>
+          <li>Bookkeeping support</li>
+          <li>Ongoing accounting clarity</li>
+          <li>Business owner support</li>
         </ul>
       </article>
       <article class="service-card fade-up delay-3">
-        <h3>Payroll & Advisory</h3>
-        <p>Practical support for payroll, planning, and operational financial decisions that keep the business running smoothly.</p>
+        <h3>Payroll Solutions</h3>
+        <p>We offer payroll solutions that meet your business's needs and enable you to spend time doing what you do best — running your company.</p>
         <ul>
-          <li>Payroll services</li>
-          <li>Business guidance</li>
-          <li>Financial planning support</li>
+          <li>Payroll setup and support</li>
+          <li>Business-friendly service</li>
+          <li>Time-saving operations</li>
         </ul>
       </article>
       <article class="service-card fade-up delay-1">
-        <h3>IRS & Tax Problem Resolution</h3>
-        <p>For clients who need experienced guidance when dealing with IRS notices, tax issues, or unresolved filing pressure.</p>
+        <h3>QuickBooks Help</h3>
+        <p>We offer a variety of services to help make sure that you are taking full advantage of QuickBooks' many features.</p>
         <ul>
-          <li>IRS notice response</li>
-          <li>Tax problem support</li>
-          <li>Clearer path to resolution</li>
+          <li>Setup support</li>
+          <li>Usage guidance</li>
+          <li>Improved financial organization</li>
         </ul>
       </article>
       <article class="service-card fade-up delay-2">
-        <h3>QuickBooks Support</h3>
-        <p>Hands-on help for businesses that need better use of QuickBooks and fewer financial blind spots.</p>
+        <h3>IRS & Tax Problems</h3>
+        <p>We're here to help you resolve your tax problems and put an end to the misery that the IRS can put you through.</p>
         <ul>
-          <li>QuickBooks assistance</li>
-          <li>Setup and usage guidance</li>
-          <li>Better financial organization</li>
+          <li>Tax issue support</li>
+          <li>IRS problem guidance</li>
+          <li>Resolution-focused help</li>
         </ul>
       </article>
       <article class="service-card fade-up delay-3">
-        <h3>Secure Client Support</h3>
-        <p>Simple, direct pathways for asking questions, uploading files securely, and starting a consultation without friction.</p>
+        <h3>Financial Planning</h3>
+        <p>We offer one-on-one guidance and a comprehensive financial plan that helps manage risk, improve performance, and ensure growth and longevity.</p>
         <ul>
-          <li>Ask-a-question intake</li>
-          <li>Secure file upload</li>
-          <li>Newsletter and client education</li>
+          <li>One-on-one guidance</li>
+          <li>Financial planning support</li>
+          <li>Long-term thinking</li>
         </ul>
       </article>
     </div>
@@ -344,26 +379,24 @@ footer { background: #10243d; color: white; }
 <section id="why-us" style="background:#eef4f8;">
   <div class="section-inner split">
     <div class="panel fade-up">
-      <span class="section-eyebrow">Why This Wins</span>
-      <h3>Why this template is the best fit</h3>
-      <p>This firm needs trust, clarity, and service organization more than flash. Template `03-light-professional-coach` is the right conversion choice because it feels credible, modern, and approachable — which is exactly what accounting buyers need.</p>
+      <span class="section-eyebrow">Existing Text + Better UX</span>
+      <h3>Why this version is stronger</h3>
+      <p>The current site already has solid core language. The issue is not a lack of services or credibility — it is presentation, hierarchy, and conversion flow. This version keeps their substance and improves the user experience around it.</p>
       <ol style="margin-top:1rem;">
-        <li>Clean visual hierarchy builds trust faster</li>
-        <li>Strong consultation CTA gives visitors a single next step</li>
-        <li>Service blocks explain value better than generic navigation links</li>
-        <li>Mobile experience is far cleaner than the current site</li>
+        <li>Same core offer, clearer structure</li>
+        <li>Stronger first impression on desktop and mobile</li>
+        <li>More direct service navigation</li>
+        <li>Contact is easier through a modal instead of a buried page flow</li>
       </ol>
     </div>
     <div class="panel fade-up delay-1">
       <span class="section-eyebrow">Pitch Angle</span>
-      <h3>What makes this a strong pitch piece</h3>
-      <p>This is not just a prettier homepage. It demonstrates a more commercially effective structure:</p>
+      <h3>What to show them in the pitch</h3>
       <ul style="margin-top:1rem;">
-        <li>Clear headline for the right audience</li>
-        <li>Immediate trust and service relevance</li>
-        <li>Fewer distractions and stronger user flow</li>
-        <li>Modern design without losing professionalism</li>
-        <li>Better positioning for consultation-driven lead generation</li>
+        <li>We preserved their existing language and positioning</li>
+        <li>We modernized the layout without making it feel off-brand</li>
+        <li>We improved the path from visitor to consultation</li>
+        <li>We retained trust while increasing clarity and actionability</li>
       </ul>
     </div>
   </div>
@@ -371,30 +404,30 @@ footer { background: #10243d; color: white; }
 
 <section id="process">
   <div class="section-inner">
-    <span class="section-eyebrow">Suggested User Flow</span>
-    <h2 class="section-title fade-up">How the improved site should <span style="color:var(--accent)">convert</span></h2>
-    <p class="section-sub fade-up delay-1">The goal is simple: help visitors self-identify, trust the firm, understand the services, and take the next step quickly.</p>
+    <span class="section-eyebrow">User Flow</span>
+    <h2 class="section-title fade-up">HOW THE IMPROVED SITE <span style="color:var(--accent)">SHOULD CONVERT</span></h2>
+    <p class="section-sub fade-up delay-1">The best improvement here is reducing friction. A visitor should understand the firm quickly, find the right service, and submit a consultation request without hunting around the site.</p>
 
     <div class="process-grid">
       <article class="process-step fade-up delay-1">
         <div class="step-num">01</div>
         <h4>Clear Promise</h4>
-        <p>The visitor immediately sees what the firm does and who it serves.</p>
+        <p>Visitors immediately understand the firm is professional, experienced, and affordable.</p>
       </article>
       <article class="process-step fade-up delay-2">
         <div class="step-num">02</div>
-        <h4>Service Clarity</h4>
-        <p>They find the right service without hunting through fragmented pages.</p>
+        <h4>Service Match</h4>
+        <p>Visitors quickly identify the right area of help: tax, payroll, QuickBooks, IRS problems, or planning.</p>
       </article>
       <article class="process-step fade-up delay-3">
         <div class="step-num">03</div>
-        <h4>Trust Signals</h4>
-        <p>Professional presentation and structure reduce hesitation.</p>
+        <h4>Trust Reinforcement</h4>
+        <p>Existing trust language is surfaced more cleanly so the firm feels current and credible.</p>
       </article>
       <article class="process-step fade-up delay-4">
         <div class="step-num">04</div>
-        <h4>Consultation CTA</h4>
-        <p>A clear call-to-action moves them toward contact, file upload, or inquiry.</p>
+        <h4>Modal Inquiry</h4>
+        <p>A pop-up form captures name, email, and what the visitor needs help with in a fast, low-friction way.</p>
       </article>
     </div>
   </div>
@@ -402,23 +435,28 @@ footer { background: #10243d; color: white; }
 
 <section class="testi-section">
   <div class="section-inner">
-    <span class="section-eyebrow">Credibility Language</span>
-    <h2 class="section-title fade-up">Example testimonial / trust section <span style="color:var(--accent)">they should have</span></h2>
+    <span class="section-eyebrow">Existing Trust Language</span>
+    <h2 class="section-title fade-up">THEIR CURRENT SOCIAL PROOF, <span style="color:var(--accent)">USED BETTER</span></h2>
     <div class="testi-grid">
       <article class="testi-card fade-up delay-1">
-        <p class="testi-quote">“Professional, responsive, and easy to work with. They helped simplify a process that felt overwhelming before we found them.”</p>
-        <div class="testi-name">Individual Tax Client</div>
-        <div class="testi-role">Example placement for local trust signal</div>
+        <p class="testi-quote">“Fitzpatrick & Casimiro, CPAs, Inc. is one of the leading firms in the area.”</p>
+        <div class="testi-name">Current Site Statement</div>
+        <div class="testi-role">Reframed as visible trust copy</div>
       </article>
       <article class="testi-card fade-up delay-2">
-        <p class="testi-quote">“As a business owner, I want clarity and timely answers. This kind of website makes the firm feel organized, current, and credible.”</p>
-        <div class="testi-name">Business Owner Prospect</div>
-        <div class="testi-role">Example positioning for consultation conversion</div>
+        <p class="testi-quote">“With Fitzpatrick & Casimiro, CPAs, Inc., each client receives close personal and professional attention.”</p>
+        <div class="testi-name">Current Site Statement</div>
+        <div class="testi-role">Better placement for reassurance</div>
       </article>
       <article class="testi-card fade-up delay-3">
-        <p class="testi-quote">“A better service presentation reduces confusion and increases the odds that the right clients actually reach out.”</p>
-        <div class="testi-name">Marketing / Conversion Lens</div>
-        <div class="testi-role">Why this redesign is a business tool, not just design polish</div>
+        <p class="testi-quote">“Fitzpatrick & Casimiro, CPAs, Inc. is professional and responsive.”</p>
+        <div class="testi-name">Current Site Statement</div>
+        <div class="testi-role">Supports contact conversion</div>
+      </article>
+      <article class="testi-card fade-up delay-4">
+        <p class="testi-quote">“Fitzpatrick & Casimiro, CPAs, Inc. is known for quality service.”</p>
+        <div class="testi-name">Current Site Statement</div>
+        <div class="testi-role">Keeps their existing voice intact</div>
       </article>
     </div>
   </div>
@@ -426,30 +464,89 @@ footer { background: #10243d; color: white; }
 
 <section class="cta-section" id="contact">
   <div class="cta-wrap fade-up">
-    <span class="section-eyebrow" style="color:rgba(255,255,255,.7);">Pitch Version</span>
-    <h2>THIS IS THE KIND OF UPGRADE THAT CAN <span style="color:#9be38f;">BLOW THEM AWAY</span></h2>
-    <p>If the goal is to pitch Fitzpatrick & Casimiro on a better website, this concept gives you a strong before-and-after story: more trust, clearer services, better mobile experience, and a much stronger consultation path than the current site.</p>
+    <span class="section-eyebrow" style="color:rgba(255,255,255,.7);">Contact Flow Upgrade</span>
+    <h2>WE WANT TO HEAR FROM YOU</h2>
+    <p>Please fill out the form and let us know how we can be of service. We will happily offer you a free consultation to determine how we can best serve you.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="#home" class="btn-accent">Review Homepage Concept</a>
-      <a href="#why-us" class="btn-outline" style="border-color:white;color:white;">See Why This Template Fits</a>
+      <button type="button" class="btn-accent open-contact">Open Contact Form</button>
+      <a href="tel:9164837100" class="btn-outline" style="border-color:white;color:white;">Call 916-483-7100</a>
     </div>
-    <div class="notice">Internal note: this page is intentionally built as a better-version pitch concept for the client, not as a final published production site.</div>
+    <div class="notice">Internal pitch note: this version intentionally combines their existing messaging with a stronger conversion path.</div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#home" class="footer-brand-logo">Fitzpatrick <span>&</span> Casimiro</a>
-        <p>Modern website concept built from the OpenClaw template skill as a conversion-first redesign pitch for a Sacramento CPA firm.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="footer-brand-logo">Fitzpatrick <span>&</span> Casimiro</a>
+          <p>Fitzpatrick & Casimiro, CPAs, Inc. is licensed in CA and specializes in CPA. We offer a broad range of services for business owners, executives, and independent professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Tax Preparation</a></li>
+            <li><a href="#services">Small Business Accounting</a></li>
+            <li><a href="#services">Payroll</a></li>
+            <li><a href="#services">QuickBooks</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><button type="button" class="open-contact" style="background:none;border:none;padding:0;color:rgba(255,255,255,.72);cursor:pointer;text-align:left;">Ask a Question</button></li>
+            <li><a href="#contact">Free Consultation</a></li>
+            <li><a href="#services">IRS Help</a></li>
+            <li><a href="#services">Financial Planning</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:9164837100">916-483-7100</a></li>
+            <li><p>Professional, experienced, and affordable</p></li>
+            <li><p>Sacramento, CA</p></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 concept build — created as a sales demonstration.</p>
+      <p class="footer-copy">© 2026 concept build — created as a sales demonstration using their existing website language and an improved conversion structure.</p>
     </div>
   </div>
 </footer>
+
+<div class="modal" id="contactModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="modal-head">
+      <h3 id="contactModalTitle">Request Help</h3>
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Tell us how we can be of service. This concept uses a simple popup form to reduce friction and increase consultation submissions.</p>
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Demo only: form submission would be wired to their intake workflow.');">
+        <div class="label-wrap">
+          <label for="name">Name</label>
+          <input id="name" class="input" type="text" placeholder="Your full name" required>
+        </div>
+        <div class="label-wrap">
+          <label for="email">Email</label>
+          <input id="email" class="input" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="label-wrap">
+          <label for="help">What do you need help with?</label>
+          <textarea id="help" class="textarea" placeholder="Tax preparation, payroll, IRS issue, QuickBooks support, financial planning, or another need" required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-accent">Submit Request</button>
+          <button type="button" class="btn-outline" id="modalCancel">Cancel</button>
+        </div>
+        <div class="form-note">Demo note: fields requested were name, email, and what they need help with.</div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script>
 const nav = document.getElementById('mainNav');
@@ -458,6 +555,26 @@ window.addEventListener('scroll', () => nav.classList.toggle('shadow', window.sc
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobMenu').classList.add('open'));
 document.getElementById('mobClose').addEventListener('click', () => document.getElementById('mobMenu').classList.remove('open'));
 document.querySelectorAll('.mob-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobMenu').classList.remove('open')));
+
+document.querySelectorAll('.open-contact').forEach(btn => btn.addEventListener('click', () => {
+  document.getElementById('mobMenu').classList.remove('open');
+  document.getElementById('contactModal').classList.add('open');
+  document.body.classList.add('modal-open');
+}));
+
+const closeModal = () => {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.classList.remove('modal-open');
+};
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalCancel').addEventListener('click', closeModal);
+document.getElementById('contactModal').addEventListener('click', (e) => {
+  if (e.target.id === 'contactModal') closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
 
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
